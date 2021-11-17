@@ -1,0 +1,42 @@
+<section class="todoapp" *ngIf="obsTodoList | async as TDL">
+    <header class="header">
+      <h1>Todo List</h1> <!-- Le label de la liste -->
+      <form (ngSubmit)="append(newLabel.value)">
+        <input  #newLabel
+                name        = "newTodoInput"
+                class       = "new-todo"
+                placeholder = "Que faire?"
+                autofocus #lab/>
+      </form>
+    </header>
+    <section class="main">
+          <input  class="toggle-all"
+              type="checkbox"
+              name="toggleAll"
+          />
+          <label for="toggleAll">Mark all as complete</label>
+  
+  
+      <ul class="todo-list">
+        <li *ngFor="let item of TDL.items">
+            <app-todo-item [data]="item"></app-todo-item>
+        </li><!-- Inclure les todoitem ici (dans des balises li) -->
+      </ul>
+    </section>
+    <footer class="footer">
+      <span class="todo-count"><strong></strong> restantes</span>
+      <ul class="filters">
+        <li>
+          <a class="filterAll">Tous</a>
+        </li>
+        <li>
+          <a class="filterActives">Actifs</a>
+        </li>
+        <li>
+          <a class="filterCompleted">Complétés</a>
+        </li>
+      </ul>
+      <button class="clear-completed">Supprimer cochées</button>
+    </footer>
+  </section>
+  

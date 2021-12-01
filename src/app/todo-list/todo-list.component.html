@@ -13,13 +13,14 @@
           <input  class="toggle-all"
               type="checkbox"
               name="toggleAll"
+              
           />
           <label for="toggleAll">Mark all as complete</label>
   
   
       <ul class="todo-list">
-        <li *ngFor="let item of TDL.items">
-            <app-todo-item [data]="item"></app-todo-item>
+        <li *ngFor="let item of TDL.items" [class.editing]="monItem.isEditing">
+            <app-todo-item [data]="item" (update)="updateIsDone(item)" (remove)="delete(item)" #monItem></app-todo-item>
         </li><!-- Inclure les todoitem ici (dans des balises li) -->
       </ul>
     </section>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, IterableDiffers } from '@angular/core';
 import {TodoItem, TodoList, TodolistService} from '../todolist.service';
 import {Observable} from 'rxjs';
 
@@ -28,6 +28,10 @@ export class TodoListComponent implements OnInit {
 
   delete(item: TodoItem): void {
     this.TDLS.remove(item);
+  }
+
+  updateIsDone(item: TodoItem){
+    this.TDLS.update({"isDone":!item.isDone},item);
   }
 
 }

@@ -11,9 +11,11 @@ type FctFilter = (item: TodoItem) => boolean;
 })
 export class TodoListComponent implements OnInit {
 
-  FilterFct!: FctFilter;
+  filterFct!: FctFilter;
 
-  constructor(private TDLS: TodolistService) { }
+  constructor(private TDLS: TodolistService) {
+    this.filterFct = this.filterAll;
+  }
 
   ngOnInit(): void {
   }
@@ -53,6 +55,18 @@ export class TodoListComponent implements OnInit {
 
   redo(): void {
     this.TDLS.redo();
+  }
+
+  filterAll: FctFilter = (item): boolean => {
+    return !!item; // retourne true si il est diférent de indefine
+  }
+
+  filterDone: FctFilter = (item): boolean => {
+    return item.isDone; // retourne true si il est diférent de indefine
+  }
+
+  filterNDone: FctFilter = (item): boolean => {
+    return !item.isDone; // retourne true si il est diférent de indefine
   }
 
 }

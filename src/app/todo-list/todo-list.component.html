@@ -14,15 +14,14 @@
     <section class="main">
           <input  class="toggle-all"
               type="checkbox"
-              name="toggleAll"
-              
+              name="toggleAll" 
           />
           <label for="toggleAll">Mark all as complete</label>
   
   
       <ul class="todo-list">
         <li
-          *ngFor="let item of TDL.items"
+          *ngFor="let item of TDL.items.filter(filterFct)"
           [class.editing]="monItem.editing"
           [class.completed]="item.isDone"
         >
@@ -40,13 +39,13 @@
       <span class="todo-count"  *ngIf="obsTodoList|async as TDL"><strong>{{countNDone(TDL)}}</strong> restantes</span>
       <ul class="filters">
         <li>
-          <a class="filterAll">Tous</a>
+          <a class="filterAll" (click)="this.filterFct=filterAll">Tous</a>
         </li>
         <li>
-          <a class="filterActives">Actifs</a>
+          <a class="filterActives" (click)="this.filterFct=filterNDone">Actifs</a>
         </li>
         <li>
-          <a class="filterCompleted">Complétés</a>
+          <a class="filterCompleted" (click)="this.filterFct=filterDone">Complétés</a>
         </li>
       </ul>
       <button class="clear-completed">Supprimer cochées</button>

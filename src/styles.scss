@@ -301,6 +301,15 @@ body {
   display: inline;
 }
 
+.btn li {
+  display: inline;
+}
+
+.btn li button {
+  margin: 3px;
+  padding: 0px 20px;
+}
+
 .filters li a {
   color: inherit;
   margin: 3px;

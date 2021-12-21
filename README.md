@@ -14,7 +14,8 @@ Voici les différentes fonctionnalités qui ont été implémentées dans cette 
 * supprimer une tâche
 * modifier une tâche : j'ai mis plus de temps que prévu pour développer l'édition à cause de difficulté à savoir quand utiliser la fonction update et quand utiliser l'editing
 * cocher une tâche
-* sélectionner toutes les tâches
+* cocher toutes les tâches
+* décocher toutes les tâches
 * indiquer le nombre de tâches restantes à faire
 * possibilité de filtrer les tâches => toutes les tâches, tâches actives (donc non faites), tâches complétées : les difficultés rencontraient pour les filtres viennent en partie du mauvaise compréhension de l'utilisation du FctFilter
 * supprimer les tâches cochées

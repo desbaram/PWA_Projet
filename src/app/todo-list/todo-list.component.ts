@@ -85,4 +85,11 @@ export class TodoListComponent implements OnInit {
     }) /* pour tous les éléments de la liste, s'il n'est pas fait (isDone = false) on update iDone = true */
   }
 
+  allUncheck(list: TodoList): void{
+    list.items.forEach(item => {
+      if(item.isDone)
+        this.TDLS.update({isDone:false}, item)
+    }) /* pour tous les éléments de la liste, s'il est fait (isDone = true) on update iDone = false */
+  }
+
 }

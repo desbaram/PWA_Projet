@@ -58,13 +58,18 @@
       </ul>
       <!-- boutton qui supprime tous les items cochés donc toutes les tâches faites -->
       <button class="clear-completed" (click)="deleteDone(TDL)">Supprimer cochées</button> <br/>
+      <ul class="btn">
+        <!-- boutton qui décoche tous les items -->
+       <li><button class="clear-completed" (click)="allUncheck(TDL)">Décocher tous</button></li>
       <!-- boutton qui supprime tous les items de la liste donc toutes les tâches -->
-      <button class="clear-completed" (click)="undo()">Effacer tout<i class="gg-trash"></i></button>
+      <li><button class="clear-completed" (click)="undo()">Effacer tout<i class="gg-trash"></i></button></li>
       <!-- boutton qui annule la dernière action faite -->
-      <button class="clear-completed" (click)="undo()">Annuler<i class="gg-undo"></i></button>
+      <li><button class="clear-completed" (click)="undo()">Annuler<i class="gg-undo"></i></button></li>
       <!-- boutton qui rétablit comme avant -->
-      <button class="clear-completed" (click)="redo()">Rétablir<i class="gg-redo"></i></button>
+      <li><button class="clear-completed" (click)="redo()">Rétablir<i class="gg-redo"></i></button></li>
+    </ul>
     </footer>
+    <br/>
     <br/>
     <br/>
   </section>

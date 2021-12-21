@@ -1,15 +1,19 @@
 
 <div class="view">
+        <!-- lorsqu'on coche la checkbox, on update l'item pour lui mettre isDone = true (ou false si on décoche la case) -->
         <input  #checkbox
                 class = "toggle"
                 type  = "checkbox"
                 name  = "done"
                 (change)="updateIsDone(checkbox.checked)"
                 [checked]="data.isDone"
-        />
+        /> 
+        <!-- affichage des items modifiables lorsqu'on double-clique dessus -->
         <label  class ="text" *ngIf="!editing" (dblclick)="isEditing()">{{data.label}}</label>
+        <!-- supprime l'item si on appuie sur le bouton -->
         <button class="destroy" (click)="remove.emit(data)"></button>
 </div>
+<!-- form qui permet d'éditer et d'updater le label de l'item -->
 <form (ngSubmit)="updateItem()">
         <input #newTextInput
                 name = "newTextInput"

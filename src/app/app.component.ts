@@ -12,7 +12,6 @@ import { TodolistService, TodoList, TodoItem } from './todolist.service';
 export class AppComponent {
 
   constructor(private TDLS: TodolistService){
-     /* Ajoutez un paramètre de type TodolistService au constructeur */
   }
 
   get obsTodoList(): Observable<TodoList>{
@@ -21,14 +20,14 @@ export class AppComponent {
 
   append(label: string): void {
     this.TDLS.append(label);
-  }
+  } /* ajout label du nouvel item */
 
   remove(items: TodoItem): void {
     this.TDLS.remove(items);
-  }
+  } /* suppression item */
 
   updateValue(item: TodoItem, u: Partial<TodoItem>):void{
     this.TDLS.update(u,item);
-  }
+  } /* mise à jour de l'item */
 
 }

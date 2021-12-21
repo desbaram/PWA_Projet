@@ -1,28 +1,9 @@
 <app-todo-list></app-todo-list>
 <hr/>
-<!-- Q1) Pour tester rapidement -->
 <h1>Liste de choses à faire</h1>
-<form (ngSubmit) = "append(newLabel.value)">
-    <input class="ajout" #newLabel  placeholder="Entrer une nouvelle tâche à faire"/>
-</form>
-<p class="filtre"> Filtres : </p>
-<a class="filtreTous">Tous</a>
-<a class="filtreAfaire">À faire</a>
-<a class="filtreFait">Fait</a>
-<ul *ngIf="obsTodoList| async as TDL">
-    <div *ngFor="let element of TDL.items">
-        
-        <input class="check" [ngModel]="element.isDone" (ngModelChange)="updateValue(element,{isDone:$event})" type="checkbox"/>
-      
-        <form class="frm" (ngSubmit) = "updateValue(element,{label: labElement.value})">
-            <input class="itm" [ngModel]="element.label" #labElement name="tot"/>
-        </form>
-        <button class="delete" (click)="remove(element)">X</button>
-    </div>
-</ul>
+<!-- affichage des items de la liste avec leur label, isDone, et l'id sous forme de json -->
 <pre *ngIf="obsTodoList| async as TDL">
     {{TDL | json}}
 </pre>
 
-<!-- Q2) Placer la balise de votre composant TodoList ici -->
 

@@ -3,8 +3,9 @@
 <link href='https://css.gg/trash.css' rel='stylesheet'>
 <section class="todoapp" *ngIf="obsTodoList | async as TDL">
     <header class="header">
-      <h1>Todo List</h1> <!-- Le label de la liste -->
-      <form (ngSubmit)="append(newLabel.value)">
+      <h1>Todo List</h1>
+      <!-- ajout d'élément dans la liste -->
+      <form (ngSubmit)="append(newLabel.value); this.newLabel.value = '' ">
         <input  #newLabel
                 name        = "newTodoInput"
                 class       = "new-todo"
@@ -17,14 +18,17 @@
               type="checkbox"
               name="toggleAll" 
           />
+          <!-- coche tous les éléments de la liste -->
           <label for="toggleAll" (click)="allCheck(TDL)">Mark all as complete</label>
           
       <ul class="todo-list">
+        <!-- injecte les items de la liste et les filtres, déclare l'édition des items ansi que leur état (isDone) -->
         <li
-          *ngFor="let item of TDL.items.filter(filterFct)"
+          *ngFor="let item of TDL.items.filter(filterFct)" 
           [class.editing]="monItem.editing"
           [class.completed]="item.isDone"
         >
+        <!-- déclaration des fonctions update et delete de l'item -->
         <app-todo-item
           [data]="item" 
           (update)="updateItem(item, $event)"
@@ -32,25 +36,33 @@
           #monItem
         >
       </app-todo-item>
-        </li><!-- Inclure les todoitem ici (dans des balises li) -->
+        </li>
       </ul>
     </section>
     <footer class="footer">
+      <!-- affiche le nombre de tâches restantes à faire -->
       <span class="todo-count"  *ngIf="obsTodoList|async as TDL"><strong>{{countNDone(TDL)}}</strong> restantes</span>
       <ul class="filters">
         <li>
+          <!-- filtre qui permet d'afficher toutes les tâches-->
           <a class="filterAll" (click)="this.filterFct=filterAll">Tous</a>
         </li>
         <li>
+          <!-- filtre qui permet d'afficher toutes les tâches qu'il reste à faire -->
           <a class="filterActives" (click)="this.filterFct=filterNDone">Actifs</a>
         </li>
         <li>
+          <!-- filtre qui permet d'afficher toutes les tâches faites-->
           <a class="filterCompleted" (click)="this.filterFct=filterDone">Complétés</a>
         </li>
       </ul>
+      <!-- boutton qui supprime tous les items cochés donc toutes les tâches faites -->
       <button class="clear-completed" (click)="deleteDone(TDL)">Supprimer cochées</button> <br/>
+      <!-- boutton qui supprime tous les items de la liste donc toutes les tâches -->
       <button class="clear-completed" (click)="undo()">Effacer tout<i class="gg-trash"></i></button>
+      <!-- boutton qui annule la dernière action faite -->
       <button class="clear-completed" (click)="undo()">Annuler<i class="gg-undo"></i></button>
+      <!-- boutton qui rétablit comme avant -->
       <button class="clear-completed" (click)="redo()">Rétablir<i class="gg-redo"></i></button>
     </footer>
     <br/>

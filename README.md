@@ -1,27 +1,23 @@
-# PWA - TP3 - Todolist Angular
+# PWA - Projet - Todolist Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
+Ce projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
+La récupération de ce projet se fait via `https://github.com/desbaram/PWA_Projet`.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Dans un terminal, lancez la ligne de commande `npm install` pour installer npm sur votre ordinateur ou directement `npm start` si vous l'avez déjà. Votre serveur va se lancer et vous pourrez y accéder via l'url suivant : `http://localhost:4200/`.
 
-## Code scaffolding
+## Fonctionnalités implémentées
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Voici les différentes fonctionnalités qui ont été implémentées dans cette application TodoList avec quelques précision sur le développement de celles-ci :
+* ajouter une nouvelle tâche
+* supprimer une tâche
+* modifier une tâche : j'ai mis plus de temps que prévu pour développer l'édition à cause de difficulté à savoir quand utiliser la fonction update et quand utiliser l'editing
+* cocher une tâche
+* sélectionner toutes les tâches
+* indiquer le nombre de tâches restantes à faire
+* possibilité de filtrer les tâches => toutes les tâches, tâches actives (donc non faites), tâches complétées : les difficultés rencontraient pour les filtres viennent en partie du mauvaise compréhension de l'utilisation du FctFilter
+* supprimer les tâches cochées
+* annuler l'action
+* refaire l'action
+* effacer toutes les tâches

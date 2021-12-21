@@ -41,10 +41,10 @@ export class TodoItemComponent implements OnInit {
       this.update.emit({label: this.newData});
     }
     this.isEditing();
-  }
+  } /* fonction update qui modifie le label de l'élément en prenant la nouvelle valeur */
   
   updateIsDone(e: boolean): void{
     this.update.emit({isDone: e});
-  }
+  } /* fonction update qui modifie l'état isDone de l'élément */
 
 }

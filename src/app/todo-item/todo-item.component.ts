@@ -15,21 +15,21 @@ export class TodoItemComponent implements OnInit {
   @Output() remove = new EventEmitter<TodoItem>();
   @ViewChild('newTextInput') newTextInput!: ElementRef<HTMLInputElement>;
   
-  private _isEditing = false;
-
+  editing = false;
+  newData!:string;
   constructor() { }
 
 
   ngOnInit(): void {
   }
 
-  get isEditing():boolean {
-    return this._isEditing;
+  get Editing():boolean {
+    return this.editing;
   }
 
-  set isEditing(e: boolean) {
-    this._isEditing = e;
-    if (e) {
+  isEditing() {
+    this.editing = !this.editing;
+    if (this.editing) {
       requestAnimationFrame(
         () => this.newTextInput.nativeElement.focus()
       );
@@ -37,7 +37,14 @@ export class TodoItemComponent implements OnInit {
   }
 
   updateItem(): void{
-    this.update.emit(this.data);
+    if (this.newData !== undefined && this.newData !== ''){
+      this.update.emit({label: this.newData});
+    }
+    this.isEditing();
+  }
+  
+  updateIsDone(e: boolean): void{
+    this.update.emit({isDone: e});
   }
 
 }

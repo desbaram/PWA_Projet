@@ -21,13 +21,23 @@
   
   
       <ul class="todo-list">
-        <li *ngFor="let item of TDL.items" [class.editing]="monItem.isEditing">
-            <app-todo-item [data]="item" (update)="updateIsDone(item)" (remove)="delete(item)" #monItem></app-todo-item>
+        <li
+          *ngFor="let item of TDL.items"
+          [class.editing]="monItem.editing"
+          [class.completed]="item.isDone"
+        >
+        <app-todo-item
+          [data]="item" 
+          (update)="updateItem(item, $event)"
+          (remove)="delete(item)"
+          #monItem
+        >
+      </app-todo-item>
         </li><!-- Inclure les todoitem ici (dans des balises li) -->
       </ul>
     </section>
     <footer class="footer">
-      <span class="todo-count"><strong></strong> restantes</span>
+      <span class="todo-count"  *ngIf="obsTodoList|async as TDL"><strong>{{countNDone(TDL)}}</strong> restantes</span>
       <ul class="filters">
         <li>
           <a class="filterAll">Tous</a>

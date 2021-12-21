@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, IterableDiffers } from '@an
 import {TodoItem, TodoList, TodolistService} from '../todolist.service';
 import {Observable} from 'rxjs';
 
+type FctFilter = (item: TodoItem) => boolean;
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -9,6 +10,8 @@ import {Observable} from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent implements OnInit {
+
+  FilterFct!: FctFilter;
 
   constructor(private TDLS: TodolistService) { }
 
@@ -30,8 +33,18 @@ export class TodoListComponent implements OnInit {
     this.TDLS.remove(item);
   }
 
-  updateIsDone(item: TodoItem){
-    this.TDLS.update({"isDone":!item.isDone},item);
+  deleteIsDone(item: TodoItem): void{
+    if(item.isDone)
+      this.TDLS.remove(item);
+  }
+
+  countNDone(list: TodoList): number{
+    let a = 0;
+    list.items.forEach(item => {
+      if(!item.isDone)
+        a+=1
+    })
+    return a
   }
 
   undo(): void {

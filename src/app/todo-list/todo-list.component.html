@@ -1,5 +1,6 @@
 <link href='https://css.gg/undo.css' rel='stylesheet'>
 <link href='https://css.gg/redo.css' rel='stylesheet'>
+<link href='https://css.gg/trash.css' rel='stylesheet'>
 <section class="todoapp" *ngIf="obsTodoList | async as TDL">
     <header class="header">
       <h1>Todo List</h1> <!-- Le label de la liste -->
@@ -16,9 +17,8 @@
               type="checkbox"
               name="toggleAll" 
           />
-          <label for="toggleAll">Mark all as complete</label>
-  
-  
+          <label for="toggleAll" (click)="allCheck(TDL)">Mark all as complete</label>
+          
       <ul class="todo-list">
         <li
           *ngFor="let item of TDL.items.filter(filterFct)"
@@ -48,9 +48,11 @@
           <a class="filterCompleted" (click)="this.filterFct=filterDone">Complétés</a>
         </li>
       </ul>
-      <button class="clear-completed">Supprimer cochées</button>
+      <button class="clear-completed" (click)="deleteDone(TDL)">Supprimer cochées</button> <br/>
+      <button class="clear-completed" (click)="undo()">Effacer tout<i class="gg-trash"></i></button>
+      <button class="clear-completed" (click)="undo()">Annuler<i class="gg-undo"></i></button>
+      <button class="clear-completed" (click)="redo()">Rétablir<i class="gg-redo"></i></button>
     </footer>
-   <br/>
-  
-  <button class="clear-completed" (click)="undo()">Annuler<i class="gg-undo"></i></button>
-  <button class="clear-completed" (click)="redo()">Rétablir<i class="gg-redo"></i></button></section>
+    <br/>
+    <br/>
+  </section>

@@ -27,6 +27,7 @@ export class TodoListComponent implements OnInit {
   append(label: string): void {
     this.TDLS.append(label);
   }
+
   updateItem(item: TodoItem, u: Partial<TodoItem>): void {
     this.TDLS.update(u, item);
   }
@@ -35,9 +36,17 @@ export class TodoListComponent implements OnInit {
     this.TDLS.remove(item);
   }
 
-  deleteIsDone(item: TodoItem): void{
-    if(item.isDone)
+  deleteDone(list: TodoList): void{
+    list.items.forEach(item => {
+      if(item.isDone)
+        this.TDLS.remove(item);
+    })
+  }
+
+  deleteAll(list: TodoList): void{
+    list.items.forEach(item => {
       this.TDLS.remove(item);
+    })
   }
 
   countNDone(list: TodoList): number{
@@ -67,6 +76,13 @@ export class TodoListComponent implements OnInit {
 
   filterNDone: FctFilter = (item): boolean => {
     return !item.isDone; // retourne true si il est diférent de indefine
+  }
+
+  allCheck(list: TodoList): void{
+    list.items.forEach(item => {
+      if(!item.isDone)
+        this.TDLS.update({isDone:true}, item)
+    })
   }
 
 }

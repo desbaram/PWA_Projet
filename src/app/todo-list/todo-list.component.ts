@@ -34,4 +34,12 @@ export class TodoListComponent implements OnInit {
     this.TDLS.update({"isDone":!item.isDone},item);
   }
 
+  undo(): void {
+    this.TDLS.undo();
+  }
+
+  redo(): void {
+    this.TDLS.redo();
+  }
+
 }

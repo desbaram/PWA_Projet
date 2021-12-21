@@ -1,3 +1,5 @@
+<link href='https://css.gg/undo.css' rel='stylesheet'>
+<link href='https://css.gg/redo.css' rel='stylesheet'>
 <section class="todoapp" *ngIf="obsTodoList | async as TDL">
     <header class="header">
       <h1>Todo List</h1> <!-- Le label de la liste -->
@@ -39,5 +41,7 @@
       </ul>
       <button class="clear-completed">Supprimer cochées</button>
     </footer>
-  </section>
+   <br/>
   
+  <button class="clear-completed" (click)="undo()">Annuler<i class="gg-undo"></i></button>
+  <button class="clear-completed" (click)="redo()">Rétablir<i class="gg-redo"></i></button></section>
